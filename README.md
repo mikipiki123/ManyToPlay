@@ -5,16 +5,16 @@ Few reminders for myself
 3. R2 L2 taking delay - digital version
 4. check some controls that pushed simultaneously
 
-installation:
-all the commands from project directory
+# installation:
+## all the commands from project directory
 
-a. sudo apt install sdl2
+sudo apt install sdl2
 
-b. mkdir build && cd build
+mkdir build && cd build
 cmake ..
 make
 
 
-c. pip install requirements.txt
+pip install requirements.txt
 activate venv environment
 venv/bin/python -m pyremoteplay [PS IPv4]
