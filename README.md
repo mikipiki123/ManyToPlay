@@ -11,10 +11,10 @@ Few reminders for myself
 sudo apt install sdl2
 
 mkdir build && cd build <br>
-cmake ..
+cmake .. <br>
 make
 
 
-pip install requirements.txt
-activate venv environment
+pip install requirements.txt <br>
+activate venv environment <br>
 venv/bin/python -m pyremoteplay [PS IPv4]
