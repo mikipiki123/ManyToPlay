@@ -8,13 +8,13 @@ Few reminders for myself
 installation:
 all the commands from project directory
 
-1. sudo apt install sdl2
+a. sudo apt install sdl2
 
-2. mkdir build && cd build
+b. mkdir build && cd build
 cmake ..
 make
 
 
-3. pip install requirements.txt
+c. pip install requirements.txt
 activate venv environment
 venv/bin/python -m pyremoteplay [PS IPv4]
