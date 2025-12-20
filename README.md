@@ -10,7 +10,7 @@ Few reminders for myself
 
 sudo apt install sdl2
 
-mkdir build && cd build
+mkdir build && cd build <br>
 cmake ..
 make
 
