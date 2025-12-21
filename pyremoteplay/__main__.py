@@ -358,8 +358,9 @@ class CLIInstance:
         print("DEVICE SESSION IS RUNNING MIKI")
             # key = self._handle_key(self.stdscr.getkey())
 
+        ## for test separately, comment the next lines:
         proc = subprocess.Popen(
-            ["build/detect_controller"],
+            ["controller/build/detect_controller"],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
