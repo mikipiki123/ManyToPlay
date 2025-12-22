@@ -7,7 +7,7 @@ Few reminders for myself
 # installation:
 ## all the commands from project directory
 
-(MacOS) sudo apt install sdl2 <br>
+(MacOS) brew install sdl2 <br>
 (RPI) sudo apt install libsdl2-dev
 
 mkdir build && cd build <br>
