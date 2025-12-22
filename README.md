@@ -7,11 +7,14 @@ Few reminders for myself
 # installation:
 ## all the commands from project directory
 
-sudo apt install sdl2
+(MacOS) sudo apt install sdl2
+(RPI) sudo apt install libsdl2-dev
 
 mkdir build && cd build <br>
 cmake .. <br>
-make
+make <br>
+
+mkfifo /tmp/my_pipe
 
 
 pip install -r requirements.txt <br>
