@@ -18,5 +18,5 @@ mkfifo /tmp/my_pipe
 
 
 pip install -r requirements.txt <br>
-activate venv environment <br>
+source venv/bin/activate <br>
 venv/bin/python -m pyremoteplay [PS IPv4]
