@@ -14,6 +14,6 @@ cmake .. <br>
 make
 
 
-pip install requirements.txt <br>
+pip install -r requirements.txt <br>
 activate venv environment <br>
 venv/bin/python -m pyremoteplay [PS IPv4]
