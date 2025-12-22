@@ -1,20 +1,22 @@
 Few reminders for myself
 
-1. RPI bluetooth automation
-2. keyboard continous press
-3. R2 L2 taking delay - digital version
-4. check some controls that pushed simultaneously
+1. keyboard continous press
+2. R2 L2 press delay - digital version
+3. check some controls that pushed simultaneously
 
 # installation:
 ## all the commands from project directory
 
-sudo apt install sdl2
+(MacOS) brew install sdl2 <br>
+(RPI) sudo apt install libsdl2-dev
 
 mkdir build && cd build <br>
 cmake .. <br>
-make
+make <br>
+
+mkfifo /tmp/my_pipe
 
 
-pip install requirements.txt <br>
-activate venv environment <br>
+pip install -r requirements.txt <br>
+source venv/bin/activate <br>
 venv/bin/python -m pyremoteplay [PS IPv4]
