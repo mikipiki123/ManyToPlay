@@ -1,6 +1,5 @@
 
-# installation:
-## all the commands from project directory
+# Installation:
 
 (MacOS) brew install sdl2 <br>
 (RPI) sudo apt install libsdl2-dev
