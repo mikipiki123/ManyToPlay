@@ -358,7 +358,7 @@ class CLIInstance:
         print("DEVICE SESSION IS RUNNING MIKI")
             # key = self._handle_key(self.stdscr.getkey())
 
-        ## for test separately, comment the next lines:
+        ## for testing separately, comment the next lines:
         proc = subprocess.Popen(
             ["controller/build/detect_controller"],
             stdout=subprocess.DEVNULL,
@@ -378,10 +378,6 @@ class CLIInstance:
                 arg1 = fifo.readline().strip() # digital button - "press/release", analog - "axis"
                 arg2 = fifo.readline().strip() # only for analog - sensitivity
 
-                # self.controller.button("R2", "press")
-                # sleep(0.05)
-                # self.controller.button("R2", "release")
-                # sleep(0.1)
 
                 if not arg2:
                     self.controller.button(button, arg1)

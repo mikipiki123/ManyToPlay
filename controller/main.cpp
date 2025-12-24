@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <string>
 #include <cmath>
+#include <thread>
+#include <chrono>
 
 void sendPipeButton(std::string buttun, std::string pressOrRelease, int pipeID) {
     std::string message = buttun + "\n" + pressOrRelease + "\n\n";
@@ -137,7 +139,7 @@ int main() {
                                       << SDL_GameControllerGetStringForButton((SDL_GameControllerButton)e.cbutton.button)
                                       << std::endl;
 
-                            switch (e.cbutton.button) { //todo R1 and L1
+                            switch (e.cbutton.button) {
                                 case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
                                     sendPipeButton("LEFT", "press",fd);
                                     break;
@@ -237,17 +239,27 @@ int main() {
                     case SDL_CONTROLLERAXISMOTION:
                         if (e.caxis.which == SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(controller))) {
                             // Ignore small movements (Deadzone)
-                            if (std::abs(e.caxis.value) > JOYSTICK_DEAD_ZONE) {
-                                std::cout << "Axis "
-                                          << SDL_GameControllerGetStringForAxis((SDL_GameControllerAxis)e.caxis.axis)
-                                          << " Value: " << (float)e.caxis.value/32768 << std::endl;
-                            }
+                            // if (std::abs(e.caxis.value) > JOYSTICK_DEAD_ZONE) {
+                            //     std::cout << "Axis "
+                            //               << SDL_GameControllerGetStringForAxis((SDL_GameControllerAxis)e.caxis.axis)
+                            //               << " Value: " << (float)e.caxis.value/32768 << std::endl;
+                            // }
                             switch (e.caxis.axis) {//todo R2 and L2 - works like buttons
                                 case SDL_CONTROLLER_AXIS_LEFTX:
                                     sendPipeAnalog("LEFT","x",(float)e.caxis.value/32768, fd);
+                                    if (std::abs(e.caxis.value) > JOYSTICK_DEAD_ZONE) {
+                                        std::cout << "Axis "
+                                                  << SDL_GameControllerGetStringForAxis((SDL_GameControllerAxis)e.caxis.axis)
+                                                  << " Value: " << (float)e.caxis.value/32768 << std::endl;
+                                    }
                                     break;
                                 case SDL_CONTROLLER_AXIS_LEFTY:
                                     sendPipeAnalog("LEFT","y",(float)e.caxis.value/32768, fd);
+                                    if (std::abs(e.caxis.value) > JOYSTICK_DEAD_ZONE) {
+                                        std::cout << "Axis "
+                                                  << SDL_GameControllerGetStringForAxis((SDL_GameControllerAxis)e.caxis.axis)
+                                                  << " Value: " << (float)e.caxis.value/32768 << std::endl;
+                                    }
                                     break;
                                 case SDL_CONTROLLER_AXIS_RIGHTX:
                                     sendPipeAnalog("RIGHT","x",(float)e.caxis.value/32768, fd);
@@ -255,22 +267,28 @@ int main() {
                                 case SDL_CONTROLLER_AXIS_RIGHTY:
                                     sendPipeAnalog("RIGHT","y",(float)e.caxis.value/32768, fd);
                                     break;
-                                case SDL_CONTROLLER_AXIS_TRIGGERRIGHT: //todo R2
-                                    // sendPipeAnalog("RIGHT","-1" ,(float)e.caxis.value/32768, fd);
-                                    if (std::abs(e.caxis.value) > JOYSTICK_DEAD_ZONE) {
+                                case SDL_CONTROLLER_AXIS_TRIGGERRIGHT:
+                                    if (std::abs(e.caxis.value) > 32000) { //todo change the seconds to mutex
                                         sendPipeButton("R2","press",fd);
-                                    } else {
+                                        std::cout << "R2 VALUE = 1" << std::endl;
+                                        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                                    } else if (std::abs(e.caxis.value) < 2000) {
                                         sendPipeButton("R2","release",fd);
+                                        std::cout << "R2 VALUE = 0" <<  std::endl;
+                                        std::this_thread::sleep_for(std::chrono::milliseconds(40));
                                     }
                                     break;
                                 case SDL_CONTROLLER_AXIS_TRIGGERLEFT:
-                                    if (std::abs(e.caxis.value) > JOYSTICK_DEAD_ZONE) {
+                                    if (std::abs(e.caxis.value) > 32000) { //todo change the seconds to mutex
                                         sendPipeButton("L2","press",fd);
-                                    } else {
+                                        std::cout << "L2 VALUE = 1" << std::endl;
+                                        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                                    } else if (std::abs(e.caxis.value) < 2000) {
                                         sendPipeButton("L2","release",fd);
+                                        std::cout << "L2 VALUE = 0" <<  std::endl;
+                                        std::this_thread::sleep_for(std::chrono::milliseconds(40));
                                     }
                                     break;
-                            }
                         }
 
                         break;
