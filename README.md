@@ -19,5 +19,5 @@ pip install -r requirements.txt <br>
 venv/bin/python -m pyremoteplay [PS IPv4]
 
 
-#### Known issue
-delay when buttons pressed simultaneously with R2 or L2
+#### notes
+note that the keyboard design for test and debug, only base controls implemented.
