@@ -98,39 +98,47 @@ int main() {
     while( !quit ) {
         while (SDL_PollEvent( &e ) != 0) {
 
-
-            // if (e.type == SDL_KEYDOWN) {
             switch (e.type) {
                 case SDL_KEYDOWN:
                     switch (e.key.keysym.sym) {
                     case SDLK_ESCAPE:
-                            printf("ESCAPE\n");
+                            message = "CIRCLE";
+                            // sendPipeButton(message,"press", fd);
                             break;
                     case SDLK_a:
                             message = "LEFT";
-                            sendPipeButton(message,"press", fd);
+                            // sendPipeButton(message,"press", fd);
                             std::cout << "message written: "<< "LEFT" << std::endl;
                             break;
                     case SDLK_d:
                             message = "RIGHT";
-                            sendPipeButton(message, "press",fd);
+                            // sendPipeButton(message, "press",fd);
                             std::cout << "message written: "<< "RIGHT" << std::endl;
                             break;
                     case SDLK_w:
                             message = "UP";
-                            sendPipeButton(message,"press", fd);
+                            // sendPipeButton(message,"press", fd);
                             std::cout << "message written: "<< "UP" << std::endl;
                             break;
                     case SDLK_s:
                             message = "DOWN";
-                            sendPipeButton(message,"press", fd);
+                            // sendPipeButton(message,"press", fd);
                             std::cout << "message written: "<< "DOWN" << std::endl;
+                            break;
+                    case SDLK_RETURN:
+                            message = "CROSS";
+                            // sendPipeButton(message,"press", fd);
                             break;
                     case SDLK_q:
                             quit = true;
                             printf("Quitting\n");
                             break;
+
                     }
+                    sendPipeButton(message,"press", fd);
+                    std::this_thread::sleep_for(std::chrono::milliseconds(20));
+                    sendPipeButton(message,"release", fd);
+
 
                     // sendPipeButton(message, fd);
 
