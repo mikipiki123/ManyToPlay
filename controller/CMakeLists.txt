@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 20)
 
 find_package(SDL2 REQUIRED)
 
-add_executable(detect_controller main.cpp)
+add_executable(detect_controller main.cpp
+        devices.h
+        gameController.cpp)
 
 target_link_libraries(detect_controller PRIVATE
         SDL2::SDL2
