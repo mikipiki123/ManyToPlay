@@ -4,18 +4,12 @@
 (MacOS) brew install sdl2 <br>
 (RPI) sudo apt install libsdl2-dev
 
-cd controller <br>
-mkdir build && cd build <br>
-cmake .. <br>
-make <br>
+#### from root dir use the installer.
 
-mkfifo /tmp/my_pipe
+chmod +x install.sh
 
-#### from root dir:
-python -m venv venv
+./install.sh
 
-source venv/bin/activate <br>
-pip install -r requirements.txt <br>
 venv/bin/python -m pyremoteplay [PS IPv4]
 
 
