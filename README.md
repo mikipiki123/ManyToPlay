@@ -10,18 +10,18 @@ chmod +x install.sh
 
 ./install.sh
 
-####register:
+#### register:
 venv/bin/python -m pyremoteplay [PS IPv4]
 
 After the user register to pyremoteplay connect the controller:
 
 controller on pairing mode + python connect.py
 
-####if something wrong write: 
+#### if something wrong write: 
 
 sudo rfkill unblock bluetooth
 
-####and finally to play:
+#### and finally to play:
 
 venv/bin/python -m pyremoteplay [PS IPv4]
 
