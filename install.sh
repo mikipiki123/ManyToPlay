@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PACKAGES=(cmake gcc g++ make)
+PACKAGES=(cmake gcc g++ make libsdl2-dev)
 
 sudo apt update
 
@@ -41,3 +41,5 @@ python -m venv venv
 
 source venv/bin/activate
 pip install -r requirements.txt
+
+sudo rfkill unblock bluetooth
