@@ -27,4 +27,5 @@ venv/bin/python -m pyremoteplay [PS IPv4]
 
 
 #### notes
-note that the keyboard design for test and debug, only base controls implemented.
+1. the keyboard design for test and debug, only base controls implemented.
+2. install.sh works only for linux enviroment.
